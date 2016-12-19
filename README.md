@@ -3,30 +3,30 @@ Made By: Vinayak Nesarikar
 
 This repository holds the code for the noise classifier and LDA pipeline. It also has the test results for each model used.
 
-To run the filter.py:
-python filter.py
-output: Overall.csv
-The feature headers follows this order (left to right)
- removeToyotaUsernames 
-  keeponlyclosesentiment 
-  keeponlyToyotahashtags 
-  keeponlytoyotasubject
-  removeUnrelatewordsfortest
-  remove1to4amtime
-  removelongtweets
+To run the filter.py:</br>
+python filter.py</br>
+output: Overall.csv</br>
+The feature headers follows this order (left to right)</br>
+ removeToyotaUsernames </br>
+  keeponlyclosesentiment </br>
+  keeponlyToyotahashtags </br>
+  keeponlytoyotasubject</br>
+  removeUnrelatewordsfortest</br>
+  remove1to4amtime</br>
+  removelongtweets</br>
   keeponlyavesubjects
 
-To run the supervised_pipe_line.py:
-python supervised_pipe_line.py
-output: Filtered.csv
-The feature headers follows this order (left to right)
- removeToyotaUsernames 
-  keeponlyclosesentiment 
-  keeponlyToyotahashtags 
-  keeponlytoyotasubject
-  removeUnrelatewordsfortest
-  remove1to4amtime
-  removelongtweets
+To run the supervised_pipe_line.py:</br>
+python supervised_pipe_line.py</br>
+output: Filtered.csv</br>
+The feature headers follows this order (left to right)</br>
+ removeToyotaUsernames </br>
+  keeponlyclosesentiment </br>
+  keeponlyToyotahashtags </br>
+  keeponlytoyotasubject</br>
+  removeUnrelatewordsfortest</br>
+  remove1to4amtime</br>
+  removelongtweets</br>
   keeponlyavesubjects
 
 To run the LDA pipeline: 
@@ -35,103 +35,103 @@ read the Instruction for running the pipeline the pipeline.docx
  The directory structure follows the structure for the original code base provided. 
  The Directory Structure is a follows:
  
- -BernoulliNB_test_results
+ -BernoulliNB_test_results</br>
  --BernoulliNB_test_results.csv
  
- -Current_Nonfiltered_data
- --AllOfFilesCombinedWithFeatureResults.csv
- --Toyota-January-2016-hate.csv
- --Toyota-January-2016-love.csv
- --Toyota-March-2016-hate.csv
- --Toyota-March-2016-love.csv
- --Toyota-November-2015-hate.csv
- --Toyota-November-2015-love.csv
- --Toyota-October-2015-hate.csv
- --Toyota-October-2015-love.csv
- --Toyota-September-2015-hate.csv
+ -Current_Nonfiltered_data</br>
+ --AllOfFilesCombinedWithFeatureResults.csv</br>
+ --Toyota-January-2016-hate.csv</br>
+ --Toyota-January-2016-love.csv</br>
+ --Toyota-March-2016-hate.csv</br>
+ --Toyota-March-2016-love.csv</br>
+ --Toyota-November-2015-hate.csv</br>
+ --Toyota-November-2015-love.csv</br>
+ --Toyota-October-2015-hate.csv</br>
+ --Toyota-October-2015-love.csv</br>
+ --Toyota-September-2015-hate.csv</br>
  --Toyota-September-2015-love.csv
  
- -logistic_regression_results
+ -logistic_regression_results</br>
  --Logistic_Regression_Results.csv
  
- -ManualData
- --Toyota
- ---Hate
- (same as the .csv files found in the Current_Nonfiltered_data. Put the .csv files you would like to use with the python scripts in this directory. The file will need to have their headers removed from the file to work with the python scripts)
- ----Toyota-January-2016-hate.csv
- ----Toyota-January-2016-love.csv
- ----Toyota-March-2016-hate.csv
- ----Toyota-March-2016-love.csv
- ----Toyota-November-2015-hate.csv
- ----Toyota-November-2015-love.csv
- ----Toyota-October-2015-hate.csv
- ----Toyota-October-2015-love.csv
- ----Toyota-September-2015-hate.csv
- ----Toyota-September-2015-love.csv
+ -ManualData</br>
+ --Toyota</br>
+ ---Hate</br>
+ (same as the .csv files found in the Current_Nonfiltered_data. Put the .csv files you would like to use with the python scripts in this directory. The file will need to have their headers removed from the file to work with the python scripts)</br>
+ ----Toyota-January-2016-hate.csv</br>
+ ----Toyota-January-2016-love.csv</br>
+ ----Toyota-March-2016-hate.csv</br>
+ ----Toyota-March-2016-love.csv</br>
+ ----Toyota-November-2015-hate.csv</br>
+ ----Toyota-November-2015-love.csv</br>
+ ----Toyota-October-2015-hate.csv</br>
+ ----Toyota-October-2015-love.csv</br>
+ ----Toyota-September-2015-hate.csv</br>
+ ----Toyota-September-2015-love.csv</br>
  
- -MultinomialNB_test_results
+ -MultinomialNB_test_results</br>
  --Multinomial_test_results.csv
  
- -MyOwnCodeCMD
- --Out 
- (output of filter.py and supervised_pipe_line.py is found here) 
- --Output
- (LDA script output found here)
- --checkingPipeline.py
- --ExtractSpecialTweets.py
- --filters.py
- --Instruction for running the pipeline the pipeline.docx
- --LDAForYelp.py
- --negative&positive_words.txt
- --np_extractor.py
- --np_extractor.pyc
- --PrepareDataForLDA.py
- --preparingListOfTweets.py
- --Preprocessing.py
- --ReadCSV.py
- --RegExpression.py
- --remove_toyota_usernames.py
- --supervised_pipe_line.py
- --topic_unrelated_words.txt
- --toyota_brand_words.txt
+ -MyOwnCodeCMD</br>
+ --Out </br>
+ (output of filter.py and supervised_pipe_line.py is found here) </br>
+ --Output</br>
+ (LDA script output found here)</br>
+ --checkingPipeline.py</br>
+ --ExtractSpecialTweets.py</br>
+ --filters.py</br>
+ --Instruction for running the pipeline the pipeline.docx </br>
+ --LDAForYelp.py</br>
+ --negative&positive_words.txt</br>
+ --np_extractor.py</br>
+ --np_extractor.pyc</br>
+ --PrepareDataForLDA.py</br>
+ --preparingListOfTweets.py</br>
+ --Preprocessing.py</br>
+ --ReadCSV.py</br>
+ --RegExpression.py</br>
+ --remove_toyota_usernames.py</br>
+ --supervised_pipe_line.py</br>
+ --topic_unrelated_words.txt</br>
+ --toyota_brand_words.txt</br>
  --toyota_brand_words_subject.txt
  
- -Original_Classification_data
- --Feature_results.ods
- --OriginalFilteredResults.csv
- --AllOfFilesCombinedWithFeatureResults.csv
- --Toyota-January-2016-hate.csv
- --Toyota-January-2016-love.csv
- --Toyota-March-2016-hate.csv
- --Toyota-March-2016-love.csv
- --Toyota-November-2015-hate.csv
- --Toyota-November-2015-love.csv
- --Toyota-October-2015-hate.csv
- --Toyota-October-2015-love.csv
- --Toyota-September-2015-hate.csv
+ -Original_Classification_data</br>
+ --Feature_results.ods</br>
+ --OriginalFilteredResults.csv</br>
+ --AllOfFilesCombinedWithFeatureResults.csv</br>
+ --Toyota-January-2016-hate.csv</br>
+ --Toyota-January-2016-love.csv</br>
+ --Toyota-March-2016-hate.csv</br>
+ --Toyota-March-2016-love.csv</br>
+ --Toyota-November-2015-hate.csv</br>
+ --Toyota-November-2015-love.csv</br>
+ --Toyota-October-2015-hate.csv</br>
+ --Toyota-October-2015-love.csv</br>
+ --Toyota-September-2015-hate.csv</br>
  --Toyota-September-2015-love.csv
  
- -StopWordCollection
- (used for LDA)
- --ListExtractedFromTweets.txt
- --MyList.txt
- --OriginalSlangList.txt
- --SearchEngines.txt
+ -StopWordCollection</br>
+ (used for LDA)</br>
+ --ListExtractedFromTweets.txt</br>
+ --MyList.txt</br>
+ --OriginalSlangList.txt</br>
+ --SearchEngines.txt</br>
  --SlangList.txt
  
- -Topics
- (Results for the LDA test with multiple lable combinations)
- --ad,car,carcomparison,company,companycomparison,dealership.txt
- --ad,car,carcomparison,company,companycomparison,dealershipFiltered.csv
- --ad,car,carcomparison,company,companycomparison,dealership,isis,prop,racing.txt
- -ad,car,carcomparison,company, companycomparison,dealership,isis,prop, racing, companyowned.txt
- --ad,car,carcomparison,company,companycomparison, dealership,isis,prop,racing,companyownedFiltered.csv
- --ad,car,carcomparison,company,companycomparison,dealership,isis,prop,racingFiltered.csv
- --ad,car,carcomparison,company,dealership.txt
- --ad,car,carcomparison,company,dealershipFiltered.csv
- --ad,car,company,companycomparison,dealership.txt
- --ad,car,company,companycomparison,dealershipFiltered.csv
- --all.txt
- --yesremoved.txt
+ -Topics</br>
+ (Results for the LDA test with multiple lable combinations)</br>
+ --ad,car,carcomparison,company,companycomparison,dealership.txt</br>
+ --ad,car,carcomparison,company,companycomparison,dealershipFiltered.csv</br>
+ --ad,car,carcomparison,company,companycomparison,dealership,isis,prop,racing.txt</br>
+ -ad,car,carcomparison,company, companycomparison,dealership,isis,prop, racing, companyowned.txt</br>
+ --ad,car,carcomparison,company,companycomparison, dealership,isis,prop,racing,companyownedFiltered.csv</br>
+ --ad,car,carcomparison,company,companycomparison,dealership,isis,prop,racingFiltered.csv</br>
+ --ad,car,carcomparison,company,dealership.txt</br>
+ --ad,car,carcomparison,company,dealershipFiltered.csv</br>
+ --ad,car,company,companycomparison,dealership.txt</br>
+ --ad,car,company,companycomparison,dealershipFiltered.csv</br>
+ --all.txt</br>
+ --yesremoved.txt</br>
  --yesremovedFiltered.csv
  
