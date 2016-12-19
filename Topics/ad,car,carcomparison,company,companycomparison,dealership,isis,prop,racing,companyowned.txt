@@ -1,0 +1,13 @@
+"love" "hate" "toyota" "priu" "commerci" "bank" "#toyota"
+"toyota" "love" "hate" "land" "center" "car" "nascar"
+"love" "toyota" "#prius" "2jz" "dont" "peopl" "corolla"
+"toyota" "love" "son" "mother" "center" "hate" "drive"
+"love" "toyota" "commerci" "#toyota" "car" "truck" "hate"
+"toyota" "love" "hate" "drive" "commerci" "peopl" "truck"
+"toyota" "love" "hate" "#toyota" "2016" "great" "bmw"
+"toyota" "love" "car" "hate" "#toyota" "fuck" "priu"
+"love" "#toyota" "toyota" "#love" "2016" "#news" "corolla"
+"love" "toyota" "hate" "guy" "car" "#toyota" "tacoma"
+
+[(0, u'0.043*"love" + 0.033*"hate" + 0.023*"toyota" + 0.013*"priu" + 0.010*"commerci" + 0.010*"bank" + 0.010*"#toyota"'), (1, u'0.090*"toyota" + 0.056*"love" + 0.034*"hate" + 0.014*"land" + 0.012*"center" + 0.012*"car" + 0.009*"nascar"'), (2, u'0.045*"love" + 0.036*"toyota" + 0.013*"#prius" + 0.013*"2jz" + 0.009*"dont" + 0.005*"peopl" + 0.005*"corolla"'), (3, u'0.099*"toyota" + 0.087*"love" + 0.017*"son" + 0.017*"mother" + 0.013*"center" + 0.013*"hate" + 0.011*"drive"'), (4, u'0.129*"love" + 0.103*"toyota" + 0.020*"commerci" + 0.015*"#toyota" + 0.014*"car" + 0.010*"truck" + 0.010*"hate"'), (5, u'0.094*"toyota" + 0.049*"love" + 0.047*"hate" + 0.019*"drive" + 0.014*"commerci" + 0.009*"peopl" + 0.009*"truck"'), (6, u'0.072*"toyota" + 0.043*"love" + 0.038*"hate" + 0.013*"#toyota" + 0.012*"2016" + 0.010*"great" + 0.010*"bmw"'), (7, u'0.095*"toyota" + 0.082*"love" + 0.044*"car" + 0.032*"hate" + 0.021*"#toyota" + 0.017*"fuck" + 0.012*"priu"'), (8, u'0.067*"love" + 0.046*"#toyota" + 0.017*"toyota" + 0.015*"#love" + 0.011*"2016" + 0.011*"#news" + 0.010*"corolla"'), (9, u'0.107*"love" + 0.080*"toyota" + 0.034*"hate" + 0.022*"guy" + 0.019*"car" + 0.018*"#toyota" + 0.014*"tacoma"')]
+

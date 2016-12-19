@@ -1,0 +1,294 @@
+#Vinayak Nesarikar
+import csv
+import os
+#python script for extracting tweet topics. The python script was used from https://thetokenizer.com/2013/05/09/efficient-way-to-extract-the-main-topics-of-a-sentence/ 
+from np_extractor import NPExtractor
+from nltk.corpus import stopwords
+#The negative and word list has been taken from the following papers:
+#Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
+#       Proceedings of the ACM SIGKDD International Conference on Knowledge 
+#       Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
+#       Washington, USA, 
+#   Bing Liu, Minqing Hu and Junsheng Cheng. "Opinion Observer: Analyzing 
+#       and Comparing Opinions on the Web." Proceedings of the 14th 
+#       International World Wide Web conference (WWW-2005), May 10-14, 
+#       2005, Chiba, Japan.
+# all tweets with a toyota username will be labeled as noisy
+def removeToyotaUsernames(adr,adr2):
+  data = []
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',')
+        for row in datareader:
+          found = False
+          if "toyota" in row[0].lower():
+            found = True
+            row.append("TRUE")
+            data.append(row)
+            continue
+          if not found: 
+            row.append("FALSE")
+            data.append(row)
+      with open (adr2+file1, 'wb') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data)
+        data=[]
+#all tweets with #toyota or @toyota will be labled as not noise
+def keeponlyToyotahashtags(adr,adr2):
+  data = []
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',')
+        for row in datareader:
+          if "#toyota" in row[3].lower():
+            row.append("FALSE")
+            data.append(row)
+          elif "@toyota" in row[3].lower():
+            row.append("FALSE")
+            data.append(row)
+          else:
+            row.append("TRUE")
+            data.append(row)
+      with open (adr2+file1, 'wb') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data)
+        data=[]
+#all tweets with a sentiment aleast four words before and four words after a brand related 
+#word is labeled as not noise
+def keeponlyclosesentiment(adr,adr2):
+  open_file = open("toyota_brand_words.txt", 'r')
+  toy_words_list=[]
+  contents = open_file.readlines()
+  for i in range(len(contents)):
+         toy_words_list.append(contents[i].strip('\n'))
+  open_file = open("negative&positive_words.txt", 'r')
+  np_words_list=[]
+  contents = open_file.readlines()
+  for i in range(len(contents)):
+         np_words_list.append(contents[i].strip('\n'))
+  data = []
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',')
+        for row in datareader:
+          realfound=False
+          words = row[3].lower().split()
+          for position, word in enumerate(words): 
+            if word in np_words_list:
+              tempfin = position
+              templin = position
+              if(position>=4):
+               tempfin = position -4
+              else:
+                tempfin = 0
+              if(position +4 < len(words)):
+                 templin = position +4
+              else:
+                 templin = len(words)
+              found = False
+              for i in xrange(tempfin, templin, 1):             
+                for toyw in toy_words_list:
+                  if toyw == words[i]:
+                    row.append("FALSE")
+                    data.append(row)
+                    found=True
+                    realfound=True
+                    break 
+                if found:
+                  break
+              if found:
+                break  
+            else:
+              continue
+          if not realfound:
+            row.append("TRUE")
+            data.append(row)   
+      with open (adr2+file1, 'wb') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data)
+        data=[]
+#all tweets with a subject that is related to toyota will be considered as not noise
+def keeponlytoyotasubject(adr,adr2):
+  data = []
+  open_file = open("toyota_brand_words_subject.txt", 'r')
+  toy_words_list=[]
+  contents = open_file.readlines()
+  for i in range(len(contents)):
+    toy_words_list.append(contents[i].strip('\n'))
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',')
+        for row in datareader:
+          found = False
+          extractor = NPExtractor(row[3].lower())
+          extracted = extractor.extract()
+          correct=0
+          for toyw in toy_words_list:
+            for extract in extracted:
+              if toyw in extract:
+                correct =1
+                row.append("FALSE")
+                data.append(row) 
+                found = True 
+                break 
+            if correct ==1:
+              break
+          if not found:
+            row.append("TRUE")
+            data.append(row)
+                  
+      with open (adr2+file1, 'wb') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data)
+        data=[]
+#all tweets with a subject that is one of the average subjects for the set of tweets 
+#will be classified as not noise.
+def keeponlyavesubjects(adr,adr2):
+  data = {}
+  counter=0
+  check_word_list=[]
+  vals =[]
+  found = False
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',') 
+        for row in datareader:
+          extractor = NPExtractor(row[3].lower())
+          extracted = extractor.extract()
+          for extract in extracted:
+            if extract in data:
+              temp = data[extract] 
+  	      temp = temp + 1
+	      data[extract] = temp
+  	    else:
+  	      data.update({extract : 1})      
+  with open (adr2+"words.csv", 'wb') as outfile:
+    stop_words = set(stopwords.words('english'))
+    writer = csv.writer(outfile, delimiter=',')
+    for k,v in data.items():
+      if v<17 and v>4:
+        if k.strip() not in stop_words:
+          if len(k.replace(" ", "")) >5:
+            check_word_list.append(k)
+            writer.writerow([k , v])    
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',') 
+        for row in datareader:
+          found =False
+          for words in check_word_list:
+            if words in row[3].lower():
+              row.append("FALSE")
+              row.pop(1)
+              row.pop(1)
+              row.pop(3)
+              row.pop(3)
+              row.pop(3)
+              row.pop(3)
+              row.pop(3)
+              vals.append(row) 
+              found =True
+              break
+          if not found : 
+            row.append("TRUE")
+            row.pop(1)
+            row.pop(1)
+            row.pop(3)
+            row.pop(3)
+            row.pop(3)
+            row.pop(3)
+            row.pop(3)
+            vals.append(row)                   
+    with open (adr2+"Overall"+".csv", 'wb') as outfile:
+      writer = csv.writer(outfile)
+      writer.writerows(vals)
+      vals=[]   
+#all tweets that contain words that are indirectlly associated with toyota
+#are classified as noise
+def removeUnrelatewordsfortest(adr,adr2):
+  data = []
+  open_file = open("topic_unrelated_words.txt", 'r')
+  untoy_words_list=[]
+  contents = open_file.readlines()
+  for i in range(len(contents)):
+    untoy_words_list.append(contents[i].strip('\n'))
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',')
+        for row in datareader:
+          found =False
+          for untoyw in untoy_words_list:
+              if untoyw in row[3].lower():
+                row.append("TRUE")
+                data.append(row) 
+                found = True 
+                break
+          if not found:
+            row.append("FALSE")
+            data.append(row)
+      with open (adr2+file1, 'wb') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data)
+        data=[]
+#all tweets that were tweeted between 1 am and 4 am UTC are classified as noise
+def remove1to4amtime(adr,adr2):
+  data = []
+  for root,dirs,files in os.walk(adr):
+    for file1 in files:
+      with open (adr2+file1, 'rb') as csvfile:
+        datareader = csv.reader(csvfile, delimiter=',')
+        for row in datareader:
+          found = False
+          if len(row) >= 6:
+            vals = row[5].split(" ")
+            if len(vals)>=2:
+              if(vals[1] == ''):
+                vals.remove('')
+                if(':' in vals[1]):
+                  temp = vals[1].split(":")
+                  if(int(temp[0])>=1 and int(temp[0])<4): 
+                    if(vals[2]=='AM'):
+                      row.append("TRUE")
+                      data.append(row) 
+                      found = True
+          if not found:
+            row.append("FALSE")
+            data.append(row)         
+      with open (adr2+file1, 'wb') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data)
+        data=[]
+#all tweets that are longer than 125 characters are classified as noise
+def removelongtweets(adr,adr2):
+ data = []
+ for root,dirs,files in os.walk(adr):
+   for file1 in files:
+     with open (adr2+file1, 'rb') as csvfile:
+       datareader = csv.reader(csvfile, delimiter=',')
+       for row in datareader:
+         if len(row[3])<125:
+           row.append("FALSE")
+           data.append(row) 
+         else:
+           row.append("TRUE")
+           data.append(row) 
+     with open (adr2+file1, 'wb') as outfile:
+       writer = csv.writer(outfile)
+       writer.writerows(data)
+       data=[]
+if __name__== "__main__":
+  removeToyotaUsernames('../ManualData/Toyota/Hate/', "Out/") 
+  keeponlyclosesentiment('../ManualData/Toyota/Hate/', "Out/")  
+  keeponlyToyotahashtags('../ManualData/Toyota/Hate/', "Out/") 
+  keeponlytoyotasubject('../ManualData/Toyota/Hate/', "Out/")
+  removeUnrelatewordsfortest('../ManualData/Toyota/Hate/', "Out/")
+  remove1to4amtime('../ManualData/Toyota/Hate/', "Out/")
+  removelongtweets('../ManualData/Toyota/Hate/', "Out/")
+  keeponlyavesubjects('../ManualData/Toyota/Hate/', "Out/")        

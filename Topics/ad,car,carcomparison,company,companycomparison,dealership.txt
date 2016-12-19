@@ -1,0 +1,9 @@
+"love" "toyota" "car" "#toyota" "drive" "tacoma" "mother"
+"toyota" "love" "hate" "car" "fuck" "corolla" "#toyota"
+"toyota" "love" "hate" "priu" "commerci" "#toyota" "peopl"
+"toyota" "hate" "love" "car" "honda" "guy" "truck"
+"love" "toyota" "hate" "#toyota" "2016" "suv" "drive"
+"love" "toyota" "2016" "care" "servic" "vehicl" "free"
+
+[(0, u'0.135*"love" + 0.101*"toyota" + 0.035*"car" + 0.025*"#toyota" + 0.013*"drive" + 0.011*"tacoma" + 0.007*"mother"'), (1, u'0.083*"toyota" + 0.079*"love" + 0.029*"hate" + 0.022*"car" + 0.022*"fuck" + 0.015*"corolla" + 0.015*"#toyota"'), (2, u'0.079*"toyota" + 0.070*"love" + 0.038*"hate" + 0.034*"priu" + 0.030*"commerci" + 0.015*"#toyota" + 0.013*"peopl"'), (3, u'0.071*"toyota" + 0.060*"hate" + 0.024*"love" + 0.015*"car" + 0.011*"honda" + 0.011*"guy" + 0.010*"truck"'), (4, u'0.062*"love" + 0.052*"toyota" + 0.031*"hate" + 0.023*"#toyota" + 0.014*"2016" + 0.008*"suv" + 0.007*"drive"'), (5, u'0.063*"love" + 0.045*"toyota" + 0.017*"2016" + 0.007*"care" + 0.007*"servic" + 0.007*"vehicl" + 0.007*"free"')]
+

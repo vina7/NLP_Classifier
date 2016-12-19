@@ -1,0 +1,8 @@
+"love" "toyota" "#toyota" "car" "time" "brand" "hear"
+"toyota" "love" "hate" "car" "peopl" "bmw" "commerci"
+"toyota" "love" "commerci" "hate" "priu" "#toyota" "fuck"
+"love" "toyota" "car" "#toyota" "drive" "hate" "son"
+"toyota" "hate" "love" "car" "#toyota" "priu" "servic"
+
+[(0, u'0.090*"love" + 0.045*"toyota" + 0.032*"#toyota" + 0.022*"car" + 0.007*"time" + 0.007*"brand" + 0.006*"hear"'), (1, u'0.060*"toyota" + 0.053*"love" + 0.030*"hate" + 0.017*"car" + 0.012*"peopl" + 0.012*"bmw" + 0.010*"commerci"'), (2, u'0.099*"toyota" + 0.092*"love" + 0.030*"commerci" + 0.022*"hate" + 0.014*"priu" + 0.014*"#toyota" + 0.014*"fuck"'), (3, u'0.125*"love" + 0.090*"toyota" + 0.023*"car" + 0.019*"#toyota" + 0.015*"drive" + 0.009*"hate" + 0.008*"son"'), (4, u'0.076*"toyota" + 0.067*"hate" + 0.022*"love" + 0.018*"car" + 0.015*"#toyota" + 0.012*"priu" + 0.011*"servic"')]
+

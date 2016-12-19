@@ -1,0 +1,8 @@
+"love" "toyota" "car" "hate" "#toyota" "supra" "cruiser"
+"love" "toyota" "#toyota" "car" "time" "fuck" "hate"
+"toyota" "love" "hate" "drive" "honda" "truck" "commerci"
+"toyota" "love" "hate" "car" "priu" "commerci" "#toyota"
+"love" "toyota" "#toyota" "truck" "#prius" "hate" "bmw"
+
+[(0, u'0.040*"love" + 0.032*"toyota" + 0.022*"car" + 0.014*"hate" + 0.013*"#toyota" + 0.008*"supra" + 0.008*"cruiser"'), (1, u'0.079*"love" + 0.057*"toyota" + 0.015*"#toyota" + 0.015*"car" + 0.010*"time" + 0.008*"fuck" + 0.007*"hate"'), (2, u'0.074*"toyota" + 0.051*"love" + 0.020*"hate" + 0.019*"drive" + 0.011*"honda" + 0.009*"truck" + 0.009*"commerci"'), (3, u'0.115*"toyota" + 0.106*"love" + 0.042*"hate" + 0.032*"car" + 0.016*"priu" + 0.015*"commerci" + 0.014*"#toyota"'), (4, u'0.092*"love" + 0.050*"toyota" + 0.036*"#toyota" + 0.012*"truck" + 0.008*"#prius" + 0.007*"hate" + 0.007*"bmw"')]
+
