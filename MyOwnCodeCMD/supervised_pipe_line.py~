@@ -30,7 +30,7 @@ for train2, test2 in kf.split(train):
     counter = counter +1
     #print(x)
     #needs to be changed if you want to use logistic regression
-    if((x<=.226)):
+    if((x<=.23)):
       notnoisearray[num]=1
       
 cleantweets=[]
