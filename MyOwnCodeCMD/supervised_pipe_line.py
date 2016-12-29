@@ -21,7 +21,7 @@ notnoisearray = [0] * len(array)
 for train2, test2 in kf.split(train):
   probas = cfr.fit(train[train2], target[train2])
   prediction = probas.decision_function(train[test2])
-  check = probas.predict_log_proba(train[test2])
+  #check = probas.predict_log_proba(train[test2])
   print(probas.coef_) 
   results.append(prediction)
   counter =0

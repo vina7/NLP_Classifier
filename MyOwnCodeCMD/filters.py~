@@ -1,6 +1,7 @@
 #Vinayak Nesarikar
 import csv
 import os
+import string
 #python script for extracting tweet topics. The python script was used from https://thetokenizer.com/2013/05/09/efficient-way-to-extract-the-main-topics-of-a-sentence/ 
 from np_extractor import NPExtractor
 from nltk.corpus import stopwords
@@ -94,7 +95,9 @@ def keeponlyclosesentiment(adr,adr2):
               else:
                  templin = len(words)
               found = False
-              for i in xrange(tempfin, templin, 1):             
+              for i in xrange(tempfin, templin, 1):
+                if not ("@" in words[i] or "#" in words[i]):
+                  words[i] = words[i].translate(None,string.punctuation)           
                 for toyw in toy_words_list:
                   if toyw.lower() == words[i].lower():
                     row.append("FALSE")

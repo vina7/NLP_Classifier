@@ -34,8 +34,6 @@ commercial
 commercials
 @commercials
 #commercials
-cars
-car
 4runner
 fr-s
 agya

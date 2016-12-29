@@ -4,7 +4,7 @@ import csv
 import numpy as np
 from sklearn.model_selection import KFold
 #imports the learning model you would like to use
-from sklearn.linear_model import LogisticRegression
+from sklearn.neural_network import MLPClassifier
 from sklearn.externals import joblib
 url = "Out/Overall.csv"
 names = ['Username', 'Tweet', 'noise', 'removetoyotaUsernames', 'keeponlyclosesentiment', 'keeponlytoyotasubject', 'removeUnrelatewordsfortest']
@@ -12,7 +12,7 @@ dataframe = pandas.read_csv(url, names=names)
 array=dataframe.values
 #used for cross validation
 kf = KFold(n_splits=10)
-cfr = LogisticRegression()
+cfr = MLPClassifier()
 #used for cross validation
 target = np.array( [x[2] for x in array] )
 train = np.array([x[3:] for x in array])
@@ -20,17 +20,17 @@ results =[]
 notnoisearray = [0] * len(array)
 for train2, test2 in kf.split(train):
   probas = cfr.fit(train[train2], target[train2])
-  prediction = probas.decision_function(train[test2])
-  check = probas.predict_log_proba(train[test2])
-  print(probas.coef_) 
+  #prediction = probas.decision_function(train[test2])
+  prediction = probas.predict_log_proba(train[test2])
+  #print(probas.coef_) 
   results.append(prediction)
   counter =0
   for x in prediction:
     num = test2[counter]
     counter = counter +1
-    #print(x)
+    print(x)
     #needs to be changed if you want to use logistic regression
-    if((x<=.23)):
+    if((x[0]>=-.47 and x[1]>=-1.4 )):
       notnoisearray[num]=1
       
 cleantweets=[]
